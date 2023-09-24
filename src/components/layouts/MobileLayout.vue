@@ -6,7 +6,7 @@ import AppBottomNavigation from '@/components/macro/BottomNavigation.vue'
 <template>
   <AppBar />
   <AppDrawer />
-  <div class="before:h-12 before:w-full before:block after:block after:w-full after:h-12">
+  <div class="before:h-12 before:w-full before:block after:block after:w-full after:h-14">
     <slot></slot>
   </div>
   <AppBottomNavigation />
