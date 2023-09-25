@@ -24,7 +24,7 @@ module.exports = {
       lg: '18px',
       base: '16px',
       sm: '14px',
-      xs: '11px'
+      xs: '12px'
     },
     colors: {
       'primary-100': 'var(--color-primary-100)',
