@@ -1,11 +1,20 @@
-import axios from 'axios'
+import { appConfig } from '@/libraries/configs/app'
+import axios, { isAxiosError } from 'axios'
 
-type QueryCodeType = 'game-list'
-export type IUseQueryDetail<Req, Res> = () => {
-  fetcher: (params: Req) => Promise<Res>
-  queryCode: QueryCodeType
+export function extractError(error: unknown): ApiResponseErrorType {
+  let errObj: ApiResponseErrorType = {
+    data: 'Error Parsing Fail',
+    status: 500
+  }
+  if (isAxiosError(error))
+    errObj = {
+      data: error.response?.data,
+      status: (error.response?.status ?? 500) as HttpErrorCodeType
+    }
+
+  return errObj
 }
 
-const guestAxios = axios.create({
-  // baseURL:
+export const guestAxios = axios.create({
+  baseURL: appConfig.API_BASE_URL
 })

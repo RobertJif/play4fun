@@ -1,4 +1,5 @@
-import type { IUseQueryDetail } from '.'
+import type { AxiosError } from 'axios'
+import { extractError, guestAxios } from '.'
 
 export type GameCodeType = 'TIC_TAC_TOE'
 type BaseGameType = {
@@ -20,12 +21,15 @@ type GameFourPlayerType = BaseGameType & {
 }
 export type GameResponseType = GameSinglePlayerType | GameTwoPlayerType | GameFourPlayerType
 
-const fetcher = async (): Promise<GameResponseType[]> => {
-  return await fetch('/api/game').then((res) => res.json())
+const queryFn = async () => {
+  const res = await guestAxios.get<GameResponseType[]>('/api/game')
+  return res.data
 }
-
-const useGameListApi: IUseQueryDetail<undefined, GameResponseType[]> = () => {
-  return { queryCode: 'game-list', fetcher: fetcher }
+const useGameListApi: IUseQueryDetail<GameResponseType[]> = () => {
+  return {
+    queryKey: ['game-list'],
+    queryFn
+  }
 }
 
 export default useGameListApi

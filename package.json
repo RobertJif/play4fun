@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@tanstack/vue-query": "^4.35.3",
     "axios": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -20,7 +21,6 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "vue": "^3.3.4",
-    "vue-query": "^1.26.0",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
