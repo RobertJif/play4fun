@@ -1,13 +1,16 @@
 <script lang="ts" setup>
-import type { GameType } from './types'
-
+import { type GameResponseType, GameStatusEnum } from '@/libraries/api-client/useGameListApi'
+import { computed } from 'vue'
 const props = defineProps<{
-  detail: GameType
+  detail: GameResponseType
 }>()
+const isGameInActive = computed(() => {
+  return props.detail.status !== GameStatusEnum.ACTIVE
+})
 </script>
 
 <template>
-  <div class="border-primary-100 border-2 h-24 w-full rounded-md flex">
+  <div class="border-primary-100 border-2 h-24 w-full rounded-md flex relative">
     <div class="flex items-center h-full px-2 w-fit">
       <img class="w-20 h-20" :src="props.detail.gameImagePath" />
     </div>
@@ -17,6 +20,14 @@ const props = defineProps<{
         <button class="bg-neutral-200 text-neutral-800 font-semibold px-4 rounded-lg">Go</button>
       </div>
       <p class="text-xs text-justify pt-1 line-clamp-3" v-html="props.detail.descriptionHTML"></p>
+    </div>
+    <div
+      class="bg-neutral-900 w-full h-full flex items-center justify-center pb-1 absolute opacity-95"
+      v-if="isGameInActive"
+    >
+      <p class="font-bold uppercase">
+        {{ props.detail.status === GameStatusEnum.COMING_SOON ? 'Coming Soon!' : 'Maintenance' }}
+      </p>
     </div>
   </div>
 </template>

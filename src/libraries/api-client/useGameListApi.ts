@@ -1,12 +1,18 @@
-import type { AxiosError } from 'axios'
-import { extractError, guestAxios } from '.'
+import { guestAxios } from '.'
 
-export type GameCodeType = 'TIC_TAC_TOE'
+type GameCodeType = 'TIC_TAC_TOE'
+export enum GameStatusEnum {
+  ACTIVE,
+  INACTIVE,
+  MAINTENANCE,
+  COMING_SOON
+}
 type BaseGameType = {
   name: string
   descriptionHTML: string
   gameImagePath: string
   code: GameCodeType
+  status: GameStatusEnum
 }
 
 type GameSinglePlayerType = BaseGameType & {
