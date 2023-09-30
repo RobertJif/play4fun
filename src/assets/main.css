@@ -77,6 +77,12 @@ body {
     sans-serif;
 }
 
+@layer components {
+  .skeleton {
+    @apply animate-pulse bg-neutral-600;
+  }
+}
+
 @layer utilities {
   .bg-gradient-100 {
     @apply from-gradient-100-0 to-gradient-100-100;
