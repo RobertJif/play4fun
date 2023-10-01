@@ -2,6 +2,7 @@
 import AppBar from '@/components/macro/AppBar.vue'
 // import AppDrawer from '@/components/macro/AppDrawer.vue'
 import AppBottomNavigation from '@/components/macro/BottomNavigation.vue'
+import LoginDialog from '../macro/LoginDialog.vue'
 </script>
 <template>
   <AppBar />
@@ -10,4 +11,5 @@ import AppBottomNavigation from '@/components/macro/BottomNavigation.vue'
     <slot></slot>
   </div>
   <AppBottomNavigation />
+  <LoginDialog />
 </template>

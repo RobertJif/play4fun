@@ -4,6 +4,7 @@ import GameView from '@/views/GameView.vue'
 import TransactionView from '@/views/TransactionView.vue'
 import TopUpView from '@/views/TopUpView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import PlayMatchView from '@/views/PlayMatchView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/game',
       name: 'game',
       component: GameView
+    },
+    {
+      path: '/match/:id',
+      name: 'play-match',
+      component: PlayMatchView
     },
     {
       path: '/profile',
