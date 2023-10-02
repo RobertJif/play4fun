@@ -3,6 +3,7 @@
   "include": [
     "env.d.ts",
     "global.d.ts",
+    "tic-tac-toe.d.ts",
     "src/**/*",
     "src/**/*.vue",
     "src/components/**/*.vue",
